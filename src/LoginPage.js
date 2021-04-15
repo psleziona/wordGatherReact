@@ -9,7 +9,11 @@ class LoginPage extends Component {
         e.preventDefault();
         let form = new FormData()
         form.append('name', 'pablo')
-        fetch('/login', {method: 'POST', body: form})
+        fetch('https://word-gather.herokuapp.com/login', {
+            method: 'POST',
+            body: form,
+            credentials: 'include'
+        })
         .then(res => console.log(res))
     }
 
