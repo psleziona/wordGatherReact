@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'mixins';
+
+form {
+    margin: 10px auto;
+    width: 80%;
+}
+
+label {
+    
+}
+
+input {
+    width: 100%;
+    margin: 10px 0;
+
+    &[type=submit] {
+        @include btn;
+        width: 100px;
+    }
+}

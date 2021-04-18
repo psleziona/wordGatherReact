@@ -1,14 +1,15 @@
 import { Component } from "react";
 
 class Main extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     render() {
         return (
             <div>
-                <h2>Witaj</h2>
+                <h2>Witaj {this.props.username}</h2>
+                <p>W budowie</p>
             </div>
         );
     }

@@ -1,67 +1,52 @@
-import { Component } from 'react';
+import { Component } from "react";
 import QuickRound from './QuickRound';
 
 class QuickRoundContainer extends Component {
     constructor() {
         super();
         this.state = {
-            testStarted: false,
-            total: 0,
-            right: 0
+            words: []
         }
     }
 
-    finishTest = () => {
-        this.setState({
-            testStarted: false
-        })
-    }
-
-    gatherData = answers => {
-        const total = answers.length;
-        const right = answers.reduce((sum, elem) => {
-            const isRight = Object.values(elem)[0]
-            return isRight?sum + 1:sum
-        }, 0)
-        this.handleUpdateDb(answers);
-        this.setState({
-            total,
-            right
-        })
-    }
-
-    handleUpdateDb = stats => {
+    getWords = () => {
         fetch('https://word-gather.herokuapp.com/words', {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(stats),
             credentials: 'include'
         })
-        .then(res => console.log(res))
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    words: data
+                })
+            })
     }
 
-    startTest = () => {
-        this.setState({
-            testStarted: true
-        })
+    updateDb = stats => {
+        if (stats.length > 0) {
+            fetch('https://word-gather.herokuapp.com/words', {
+                method: 'POST',
+                credentials: 'include',
+                mode: 'cors',
+                body: JSON.stringify(stats)
+            })
+        }
+    }
+
+    componentDidMount() {
+        this.getWords();
+    }
+
+    shouldComponentUpdate(prevProps, prevState) {
+        if (prevState == this.state) {
+            return false;
+        }
+        return true;
     }
 
     render() {
-        if (this.state.testStarted) {
-            return <QuickRound handleTest={this.finishTest} gatherData={this.gatherData}/>
-        } else {
-            return (
-                <div>
-                    <button onClick={this.startTest}>Start</button>
-                    {this.state.total > 0 &&
-                    <div>
-                        <p>Total {this.state.total}</p>
-                        <p>Right {this.state.right}</p>
-                    </div>
-                    }
-                </div>
-            )
-        }
+        return (
+            <QuickRound words={this.state.words} updateDb={this.updateDb} />
+        )
     }
 }
 

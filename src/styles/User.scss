@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'mixins';
+
+.user-page {
+
+    &__container {
+        width: 70%;
+        margin: 0 auto;
+
+    }
+}
+
+.word-stat {
+
+    &__list {
+        padding: 0;
+        list-style: none;
+    }
+
+    &__word {
+        font-size: 20px;
+    }
+}

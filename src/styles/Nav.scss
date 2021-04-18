@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'mixins';
+
+
+.nav {
+    background-color: $nav-bg-color;
+
+    &__links {
+        display: flex;
+        list-style: none;
+        justify-content: space-around;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__link {
+        color: $nav-text-color;
+        font-size: $nav-font-size;
+    }
+
+    &__anchor {
+        padding: 15px;
+        text-decoration: none;
+        width: 100%;
+        text-align: center;
+
+        &:hover {
+            background-color: $nav-hover-bg;
+            color: $nav-hover-color;
+
+        }
+    }
+}

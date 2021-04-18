@@ -1,5 +1,6 @@
 import { Component } from "react";
 import TestObject from "./TestObject";
+import './styles/Test.scss';
 
 class TestContainer extends Component {
     constructor(props) {
@@ -25,9 +26,6 @@ class TestContainer extends Component {
         }
         return true;
     }
-
-    
-    
 
     handleClick = () => {
         let notAnswered = [];
@@ -74,12 +72,10 @@ class TestContainer extends Component {
             )
         })
 
-        
-
         return (
-            <div>
+            <div className='multitest__container'>
                 {tests}
-                <button onClick={this.handleClick}>Finish</button>
+                <button className='multitest__btn multitest__btn--finish' onClick={this.handleClick}>Finish</button>
             </div>
         )
     }

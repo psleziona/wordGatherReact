@@ -1,0 +1,54 @@
+@import "variables";
+@import "mixins";
+
+
+.quickround {
+    &__container {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    &__controls {
+        text-align: center;
+        margin-top: 10px
+    }
+
+    &__btn {
+        @include btn;
+
+        &--start {
+            
+        }
+
+        &--finish {
+
+        }
+    }
+
+    &__stats {
+        display: flex;
+        justify-content: space-around;
+        
+    }
+
+    &__hints-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+
+    &__hints-item {
+        margin: 0 10px;
+    }
+
+    &__word-title {
+        font-size: 60px;
+        margin: 10px 0;
+    }
+
+    &__answer-input {
+        height: 50px;
+        font-size: 40px;
+    }
+}

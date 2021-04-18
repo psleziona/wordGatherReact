@@ -1,0 +1,67 @@
+@import "variables";
+@import "mixins";
+
+.multitest {
+    &__container {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    &__select-count {
+        height: 50px;
+        width: 120px;
+        text-align-last: center;
+    }
+
+    &__btn {
+        @include btn;
+
+        &--finish {
+            display: block;
+            margin: 20px auto 0;
+        }
+    }
+}
+
+.test-container {
+    &__title {
+        font-size: 30px;
+        margin-bottom: 15px;
+        position: relative;
+        text-align: center;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 15%;
+            width: 70%;
+            border: 1px solid black;
+        }
+    }
+
+    &__answers {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    &__answer {
+        width: 50%;
+        height: 40px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        line-height: 2.2;
+        &--right {
+            background-color: $test-right-bg;
+        }
+
+        &--wrong {
+            background-color: $test-wrong-bg;
+        }
+    }
+}

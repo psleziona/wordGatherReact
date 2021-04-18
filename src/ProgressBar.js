@@ -1,5 +1,5 @@
 import { Component } from "react";
-import './ProgressBar.scss'
+import './styles/ProgressBar.scss';
 
 class ProgressBar extends Component {
     constructor(props) {

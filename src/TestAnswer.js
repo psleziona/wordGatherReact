@@ -1,5 +1,5 @@
 import { Component } from "react";
-import './TestAnswer.scss'
+import './styles/Test.scss';
 
 class TestAnswer extends Component {
     constructor(props) {
@@ -41,12 +41,12 @@ class TestAnswer extends Component {
         const answerable = this.props.answerable;
         let bgClass = '';
         if (this.state.isAnsweredRight) {
-            bgClass = 'right';
+            bgClass = 'test-container__answer--right';
         } else if (this.state.isAnsweredRight == false) {
-            bgClass = 'wrong';
+            bgClass = 'test-container__answer--wrong';
         }
         return (
-            <li className={`list-item ${bgClass}`}
+            <li className={`test-container__answer ${bgClass}`}
                 onClick={answerable ? this.handleClick : null}>{this.props.answer}</li>
         )
     }

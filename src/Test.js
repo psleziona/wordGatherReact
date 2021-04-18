@@ -1,7 +1,8 @@
 import { Component } from "react";
 import TestContainer from "./TestContainer";
+import './styles/Test.scss';
 
-class TestMulti extends Component {
+class Test extends Component {
     constructor() {
         super();
         this.state = {
@@ -12,7 +13,7 @@ class TestMulti extends Component {
     }
 
     getData = count => {
-        fetch(`https://word-gather.herokuapp.com/words/${count}`, {
+        fetch(`https://word-gather.herokuapp.com/test-words/${count}`, {
             credentials: 'include'
         })
         .then(res => res.json())
@@ -45,15 +46,15 @@ class TestMulti extends Component {
     render() {
         if (this.state.testArray.length == 0) {        
         return (
-            <div>
-                {this.state.isDataSend?<p>Answer send</p>:null}
-                <p>Wybierz ilosc slowek</p>
-                <select onChange={this.handleChange}>
+            <div className='multitest__container'>
+                {this.state.isDataSend?<p>Odpowiedzi wysłane!</p>:null}
+                <p>Wybierz ilość słówek</p>
+                <select className='multitest__select-count' onChange={this.handleChange}>
                     <option value='5'>5</option>
                     <option value='10'>10</option>
                     <option value='20'>20</option>
                 </select>
-                <button onClick={this.handleClick}>Start</button>
+                <button className='multitest__btn' onClick={this.handleClick}>Start</button>
             </div>
         )
         } else {
@@ -62,4 +63,4 @@ class TestMulti extends Component {
     }
 }
 
-export default TestMulti;
+export default Test;

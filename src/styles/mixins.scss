@@ -1,0 +1,29 @@
+@mixin form-input {
+    width: 100%;
+}
+
+@mixin btn {
+    border: none;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    color: $btn-text-color;
+    background-color: $btn-color;
+
+    &:not([disabled]) {
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            color: $btn-hover-text;
+            background-color: $btn-hover-bg;
+        }
+    }
+
+    &:disabled {
+        background-color: $btn-disabled-bg;
+        color: $btn-disabled-text;
+        opacity: .5;
+    }
+}
