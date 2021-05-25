@@ -9,7 +9,6 @@ class Main extends Component {
         return (
             <div>
                 <h2>Witaj {this.props.username}</h2>
-                <p>W budowie</p>
             </div>
         );
     }
